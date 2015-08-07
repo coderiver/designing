@@ -3,7 +3,7 @@
 	position: relative
 	&.is-fullheight
 		height: 100%
-		min-height: 750px
+		min-height: 700px
 		overflow: hidden
 	&__in
 		position: relative
@@ -22,10 +22,9 @@
 	bottom: 0
 	width: 100%
 	height: auto
-	background-image: url(../img/bg.jpg)
-	background-repeat: no-repeat
 	z-index: 0
 	+cover
+	+blur(10px)
 	video
 		position: absolute
 		width: 100%
@@ -39,6 +38,8 @@
 			width: auto
 			height: 100%
 	+r(850)
+		background-image: url(../img/bg.jpg)
+		background-repeat: no-repeat
 		video
 			display: none
 
@@ -48,7 +49,7 @@
 	left: 0
 	right: 0
 	bottom: 0
-	background: rgba(#000, 0.6)
+	background: rgba(25, 25, 25, 0.8)
 	box-shadow: inset 0 19px 183px 0 rgba(20,20,20,1)
 	z-index: 1
 
@@ -62,6 +63,8 @@
 	+r(850)
 		display: block
 		padding-top: 20px
+	+rh(800)
+		padding-top: 20px
 
 
 .btn-wrap
@@ -70,6 +73,9 @@
 	width: 20px
 	height: 20px
 	margin-top: 7px
+	-webkit-tap-highlight-color: transparent
+	-moz-tap-highlight-color: transparent
+	z-index: 3
 	input
 		position: absolute
 		top: 0
@@ -181,23 +187,114 @@
 				opacity: 1
 	+r(850)
 		position: absolute
-		top: -500px
+		top: 0
 		left: 0
 		right: 0
 		padding: 40px 0
 		background: rgba(39,39,39,.9)
-		+tr(all 0.5s ease)
+		opacity: 0
+		visibility: hidden
+		z-index: 2
+		+tr(all 0.2s ease)
 		&.is-active
-			top: 0
+			opacity: 1
+			visibility: visible
 		li
 			display: block
 		&__link
 			padding: 20px 15px
 
 
+//idesign
+.idesign
+	padding-top: 10vh
+	text-align: center
+	font-size: 110px
+	color: #656565
+	line-height: 1
+	+roboto-t
+	+user-select(none)
+	&__subttl
+		margin-top: 30px
+		font-size: 30px
+	span
+		display: inline-block
+	+rh(800)
+		padding-top: 70px
+		&__subttl
+			font-size: 40px
+	+r(1200)
+		font-size: 70px
+	+r(850)
+		font-size: 50px
+		padding-top: 50px
+
+
+.rotator
+	position: relative
+	display: inline-block
+	min-width: 200px
+	text-align: left
+	&:before
+		content: ""
+		position: absolute
+		bottom: -10px
+		left: 0
+		right: 0px
+		height: 1px
+		background: #777
+	&:after
+		content: ""
+		position: absolute
+		bottom: 0
+		right: -20px
+		width: 9px
+		height: 9px
+		background: #ea2cbb
+		border-radius: 50%
+	&__type
+		position: relative
+		display: inline-block
+		max-width: 450px
+		text-overflow: ellipsis
+		color: #ea2cbb
+		vertical-align: bottom
+		overflow: hidden
+		+roboto-t
+	&__author
+		position: relative
+		top: 10px
+		font-size: 0
+		opacity: 0
+		+tr(all 0.1s ease)
+		&.is-active
+			opacity: 1
+			top: 0
+	&__ico
+		display: inline-block
+		margin-right: 10px
+		max-width: 50px
+		max-height: 50px
+		vertical-align: middle
+		img
+			max-width: 100%
+	&__name
+		display: inline-block
+		font-size: 18px
+		color: #808080
+		vertical-align: middle
+		+opsans-l
+	+r(850)
+		display: block
+		max-width: 250px
+		margin: 20px auto 0
+		text-align: center
+		&__type
+			max-width: 230px
+
 .info
 	position: absolute
-	padding: 50px 0 100px
+	padding: 50px 0
 	left: 0
 	right: 0
 	bottom: 0
@@ -205,7 +302,9 @@
 	background: rgba(27, 8, 22, 0.7)
 	+r(850)
 		position: static
-		margin-top: 300px
+		margin-top: 100px
+	+rh(800)
+		padding: 30px 0
 
 .item
 	position: relative
@@ -287,6 +386,43 @@
 				display: none
 		&__arrow
 			display: none
+	+rh(800)
+		&__img
+			height: 70px
+		&__arrow
+			height: 20px
+
+//arr-down
+.arr-down
+	position: relative
+	display: block
+	width: 34px
+	height: 34px
+	margin: 80px auto 0
+	background: #FFF
+	border-radius: 50%
+	-webkit-tap-highlight-color: transparent
+	-moz-tap-highlight-color: transparent
+	overflow: hidden
+	&:hover
+		&:before
+			width: 100%
+	&:after
+		content: ""
+		position: absolute
+		top: 50%
+		left: 50%
+		margin: -4px 0 0 -8px
+		+svg(arr-down, 16, 10)
+	&:before
+		content: ""
+		position: absolute
+		width: 0
+		height: 100%
+		background: rgba(#ea2cbb, 0.6)
+		+tr(width .2s ease)
+	+rh(800)
+		margin-top: 40px
 
 //content
 .about
@@ -341,6 +477,8 @@
 	height: 50px
 	bottom: 34%
 	cursor: pointer
+	-webkit-tap-highlight-color: transparent
+	-moz-tap-highlight-color: transparent
 
 .point
 	position: absolute
@@ -379,6 +517,8 @@
 		border-radius: 50%
 		background: rgba(234, 44, 187, 0.2)
 		animation: pulse 2s linear infinite
+	+r(850)
+		+scale(1)
 
 
 .tooltip
